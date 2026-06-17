@@ -1,0 +1,54 @@
+datasource db {
+  provider = "sqlite"
+}
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  books     Book[]
+}
+
+model Category {
+  id    Int    @id @default(autoincrement())
+  name  String @unique
+  books Book[]
+}
+
+model Book {
+  id               Int       @id @default(autoincrement())
+  title            String
+  author           String?
+  description      String?
+  coverPath        String?
+  isMultiChap      Boolean   @default(false)
+  currentPage      Int       @default(1)
+  currentChapterId Int?
+  readingMode      String    @default("scroll")
+  user             User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId           Int
+  category         Category? @relation(fields: [categoryId], references: [id], onDelete: SetNull)
+  categoryId       Int?
+  chapters         Chapter[]
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+}
+
+model Chapter {
+  id         Int      @id @default(autoincrement())
+  chapterNum Int
+  title      String?
+  filename   String
+  path       String
+  book       Book     @relation(fields: [bookId], references: [id], onDelete: Cascade)
+  bookId     Int
+  createdAt  DateTime @default(now())
+
+  @@unique([bookId, chapterNum])
+}
