@@ -113,6 +113,7 @@ export const ChapterScalarFieldEnum = {
   title: 'title',
   filename: 'filename',
   path: 'path',
+  coverPath: 'coverPath',
   bookId: 'bookId',
   createdAt: 'createdAt'
 } as const

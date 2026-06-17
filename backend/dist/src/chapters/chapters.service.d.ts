@@ -5,6 +5,7 @@ export declare class ChaptersService {
     create(bookId: number, chapterNum: number, title: string | undefined, filename: string, filePath: string, coverPath?: string): Promise<{
         path: string;
         title: string | null;
+        coverPath: string | null;
         createdAt: Date;
         id: number;
         chapterNum: number;
@@ -14,6 +15,7 @@ export declare class ChaptersService {
     findByBook(bookId: number): Promise<{
         path: string;
         title: string | null;
+        coverPath: string | null;
         createdAt: Date;
         id: number;
         chapterNum: number;

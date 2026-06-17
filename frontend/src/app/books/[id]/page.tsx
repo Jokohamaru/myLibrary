@@ -15,6 +15,7 @@ interface Chapter {
   title?: string;
   filename: string;
   path: string;
+  coverPath?: string;
   createdAt: string;
 }
 
@@ -403,39 +404,69 @@ function BookDetailContent() {
               )}
             </div>
           ) : (
-            <div className="space-y-2">
-              {book.chapters.map((chap) => (
-                <div
-                  key={chap.id}
-                  className="flex items-center justify-between bg-zinc-900 border border-zinc-800 rounded-xl px-4 py-3 hover:border-zinc-700 transition-all group"
-                >
-                  <button
-                    onClick={() => router.push(`/read/${book.id}?chapter=${chap.chapterNum}&page=1`)}
-                    className="flex-1 text-left min-w-0"
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {book.chapters.map((chap) => {
+                const chapCoverUrl = chap.coverPath ? getAssetUrl(chap.coverPath) : null;
+                return (
+                  <div
+                    key={chap.id}
+                    className="flex bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden hover:border-violet-600/50 hover:shadow-lg hover:shadow-violet-900/20 transition-all group"
                   >
-                    <span className="font-medium text-zinc-100 group-hover:text-violet-400 transition-colors text-sm truncate block">
-                      {chap.title || `Chapter ${chap.chapterNum}`}
-                    </span>
-                    <span className="text-xs text-zinc-500 mt-0.5 block">
-                      {new Date(chap.createdAt).toLocaleDateString('vi-VN')}
-                    </span>
-                  </button>
-                  <div className="flex items-center gap-1 shrink-0 ml-3">
+                    {/* Thumbnail */}
                     <button
                       onClick={() => router.push(`/read/${book.id}?chapter=${chap.chapterNum}&page=1`)}
-                      className="px-3 py-1.5 rounded-lg bg-zinc-800 hover:bg-violet-600/20 hover:text-violet-400 text-xs font-medium text-zinc-400 transition-all border border-zinc-700"
+                      className="shrink-0 w-20 sm:w-24 relative overflow-hidden"
                     >
-                      Đọc
+                      {chapCoverUrl ? (
+                        <img
+                          src={chapCoverUrl}
+                          alt={chap.title || `Chapter ${chap.chapterNum}`}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
+                      ) : (
+                        <div className="w-full h-full min-h-[88px] bg-gradient-to-br from-violet-900/60 to-blue-900/60 flex items-center justify-center group-hover:from-violet-800/70 group-hover:to-blue-800/70 transition-all">
+                          <BookOpen className="w-6 h-6 text-zinc-500 group-hover:text-violet-400 transition-colors" />
+                        </div>
+                      )}
+                      {/* Chapter number badge */}
+                      <div className="absolute bottom-1 left-1 bg-black/70 backdrop-blur-sm text-white text-[10px] font-bold px-1.5 py-0.5 rounded-md">
+                        #{chap.chapterNum}
+                      </div>
                     </button>
-                    <button
-                      onClick={() => setConfirmDeleteChap(chap)}
-                      className="p-1.5 rounded-lg text-zinc-600 hover:text-red-500 hover:bg-red-500/10 transition-all"
-                    >
-                      <Trash2 className="w-4 h-4" />
-                    </button>
+
+                    {/* Info */}
+                    <div className="flex-1 flex flex-col justify-between p-3 min-w-0">
+                      <div>
+                        <button
+                          onClick={() => router.push(`/read/${book.id}?chapter=${chap.chapterNum}&page=1`)}
+                          className="text-left w-full"
+                        >
+                          <p className="font-semibold text-zinc-100 group-hover:text-violet-400 transition-colors text-sm leading-tight truncate">
+                            {chap.title || `Chapter ${chap.chapterNum}`}
+                          </p>
+                          <p className="text-xs text-zinc-500 mt-1">
+                            {new Date(chap.createdAt).toLocaleDateString('vi-VN')}
+                          </p>
+                        </button>
+                      </div>
+                      <div className="flex items-center gap-2 mt-2">
+                        <button
+                          onClick={() => router.push(`/read/${book.id}?chapter=${chap.chapterNum}&page=1`)}
+                          className="flex-1 py-1.5 rounded-lg bg-zinc-800 hover:bg-violet-600/20 hover:text-violet-400 text-xs font-medium text-zinc-400 transition-all border border-zinc-700 text-center"
+                        >
+                          Đọc ngay
+                        </button>
+                        <button
+                          onClick={() => setConfirmDeleteChap(chap)}
+                          className="p-1.5 rounded-lg text-zinc-600 hover:text-red-500 hover:bg-red-500/10 transition-all"
+                        >
+                          <Trash2 className="w-3.5 h-3.5" />
+                        </button>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           )}
         </div>

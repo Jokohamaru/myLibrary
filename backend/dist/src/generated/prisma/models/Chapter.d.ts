@@ -24,6 +24,7 @@ export type ChapterMinAggregateOutputType = {
     title: string | null;
     filename: string | null;
     path: string | null;
+    coverPath: string | null;
     bookId: number | null;
     createdAt: Date | null;
 };
@@ -33,6 +34,7 @@ export type ChapterMaxAggregateOutputType = {
     title: string | null;
     filename: string | null;
     path: string | null;
+    coverPath: string | null;
     bookId: number | null;
     createdAt: Date | null;
 };
@@ -42,6 +44,7 @@ export type ChapterCountAggregateOutputType = {
     title: number;
     filename: number;
     path: number;
+    coverPath: number;
     bookId: number;
     createdAt: number;
     _all: number;
@@ -62,6 +65,7 @@ export type ChapterMinAggregateInputType = {
     title?: true;
     filename?: true;
     path?: true;
+    coverPath?: true;
     bookId?: true;
     createdAt?: true;
 };
@@ -71,6 +75,7 @@ export type ChapterMaxAggregateInputType = {
     title?: true;
     filename?: true;
     path?: true;
+    coverPath?: true;
     bookId?: true;
     createdAt?: true;
 };
@@ -80,6 +85,7 @@ export type ChapterCountAggregateInputType = {
     title?: true;
     filename?: true;
     path?: true;
+    coverPath?: true;
     bookId?: true;
     createdAt?: true;
     _all?: true;
@@ -118,6 +124,7 @@ export type ChapterGroupByOutputType = {
     title: string | null;
     filename: string;
     path: string;
+    coverPath: string | null;
     bookId: number;
     createdAt: Date;
     _count: ChapterCountAggregateOutputType | null;
@@ -138,6 +145,7 @@ export type ChapterWhereInput = {
     title?: Prisma.StringNullableFilter<"Chapter"> | string | null;
     filename?: Prisma.StringFilter<"Chapter"> | string;
     path?: Prisma.StringFilter<"Chapter"> | string;
+    coverPath?: Prisma.StringNullableFilter<"Chapter"> | string | null;
     bookId?: Prisma.IntFilter<"Chapter"> | number;
     createdAt?: Prisma.DateTimeFilter<"Chapter"> | Date | string;
     book?: Prisma.XOR<Prisma.BookScalarRelationFilter, Prisma.BookWhereInput>;
@@ -148,6 +156,7 @@ export type ChapterOrderByWithRelationInput = {
     title?: Prisma.SortOrderInput | Prisma.SortOrder;
     filename?: Prisma.SortOrder;
     path?: Prisma.SortOrder;
+    coverPath?: Prisma.SortOrderInput | Prisma.SortOrder;
     bookId?: Prisma.SortOrder;
     createdAt?: Prisma.SortOrder;
     book?: Prisma.BookOrderByWithRelationInput;
@@ -162,6 +171,7 @@ export type ChapterWhereUniqueInput = Prisma.AtLeast<{
     title?: Prisma.StringNullableFilter<"Chapter"> | string | null;
     filename?: Prisma.StringFilter<"Chapter"> | string;
     path?: Prisma.StringFilter<"Chapter"> | string;
+    coverPath?: Prisma.StringNullableFilter<"Chapter"> | string | null;
     bookId?: Prisma.IntFilter<"Chapter"> | number;
     createdAt?: Prisma.DateTimeFilter<"Chapter"> | Date | string;
     book?: Prisma.XOR<Prisma.BookScalarRelationFilter, Prisma.BookWhereInput>;
@@ -172,6 +182,7 @@ export type ChapterOrderByWithAggregationInput = {
     title?: Prisma.SortOrderInput | Prisma.SortOrder;
     filename?: Prisma.SortOrder;
     path?: Prisma.SortOrder;
+    coverPath?: Prisma.SortOrderInput | Prisma.SortOrder;
     bookId?: Prisma.SortOrder;
     createdAt?: Prisma.SortOrder;
     _count?: Prisma.ChapterCountOrderByAggregateInput;
@@ -189,6 +200,7 @@ export type ChapterScalarWhereWithAggregatesInput = {
     title?: Prisma.StringNullableWithAggregatesFilter<"Chapter"> | string | null;
     filename?: Prisma.StringWithAggregatesFilter<"Chapter"> | string;
     path?: Prisma.StringWithAggregatesFilter<"Chapter"> | string;
+    coverPath?: Prisma.StringNullableWithAggregatesFilter<"Chapter"> | string | null;
     bookId?: Prisma.IntWithAggregatesFilter<"Chapter"> | number;
     createdAt?: Prisma.DateTimeWithAggregatesFilter<"Chapter"> | Date | string;
 };
@@ -197,6 +209,7 @@ export type ChapterCreateInput = {
     title?: string | null;
     filename: string;
     path: string;
+    coverPath?: string | null;
     createdAt?: Date | string;
     book: Prisma.BookCreateNestedOneWithoutChaptersInput;
 };
@@ -206,6 +219,7 @@ export type ChapterUncheckedCreateInput = {
     title?: string | null;
     filename: string;
     path: string;
+    coverPath?: string | null;
     bookId: number;
     createdAt?: Date | string;
 };
@@ -214,6 +228,7 @@ export type ChapterUpdateInput = {
     title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     filename?: Prisma.StringFieldUpdateOperationsInput | string;
     path?: Prisma.StringFieldUpdateOperationsInput | string;
+    coverPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
     book?: Prisma.BookUpdateOneRequiredWithoutChaptersNestedInput;
 };
@@ -223,6 +238,7 @@ export type ChapterUncheckedUpdateInput = {
     title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     filename?: Prisma.StringFieldUpdateOperationsInput | string;
     path?: Prisma.StringFieldUpdateOperationsInput | string;
+    coverPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     bookId?: Prisma.IntFieldUpdateOperationsInput | number;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
@@ -232,6 +248,7 @@ export type ChapterCreateManyInput = {
     title?: string | null;
     filename: string;
     path: string;
+    coverPath?: string | null;
     bookId: number;
     createdAt?: Date | string;
 };
@@ -240,6 +257,7 @@ export type ChapterUpdateManyMutationInput = {
     title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     filename?: Prisma.StringFieldUpdateOperationsInput | string;
     path?: Prisma.StringFieldUpdateOperationsInput | string;
+    coverPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 export type ChapterUncheckedUpdateManyInput = {
@@ -248,6 +266,7 @@ export type ChapterUncheckedUpdateManyInput = {
     title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     filename?: Prisma.StringFieldUpdateOperationsInput | string;
     path?: Prisma.StringFieldUpdateOperationsInput | string;
+    coverPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     bookId?: Prisma.IntFieldUpdateOperationsInput | number;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
@@ -269,6 +288,7 @@ export type ChapterCountOrderByAggregateInput = {
     title?: Prisma.SortOrder;
     filename?: Prisma.SortOrder;
     path?: Prisma.SortOrder;
+    coverPath?: Prisma.SortOrder;
     bookId?: Prisma.SortOrder;
     createdAt?: Prisma.SortOrder;
 };
@@ -283,6 +303,7 @@ export type ChapterMaxOrderByAggregateInput = {
     title?: Prisma.SortOrder;
     filename?: Prisma.SortOrder;
     path?: Prisma.SortOrder;
+    coverPath?: Prisma.SortOrder;
     bookId?: Prisma.SortOrder;
     createdAt?: Prisma.SortOrder;
 };
@@ -292,6 +313,7 @@ export type ChapterMinOrderByAggregateInput = {
     title?: Prisma.SortOrder;
     filename?: Prisma.SortOrder;
     path?: Prisma.SortOrder;
+    coverPath?: Prisma.SortOrder;
     bookId?: Prisma.SortOrder;
     createdAt?: Prisma.SortOrder;
 };
@@ -343,6 +365,7 @@ export type ChapterCreateWithoutBookInput = {
     title?: string | null;
     filename: string;
     path: string;
+    coverPath?: string | null;
     createdAt?: Date | string;
 };
 export type ChapterUncheckedCreateWithoutBookInput = {
@@ -351,6 +374,7 @@ export type ChapterUncheckedCreateWithoutBookInput = {
     title?: string | null;
     filename: string;
     path: string;
+    coverPath?: string | null;
     createdAt?: Date | string;
 };
 export type ChapterCreateOrConnectWithoutBookInput = {
@@ -382,6 +406,7 @@ export type ChapterScalarWhereInput = {
     title?: Prisma.StringNullableFilter<"Chapter"> | string | null;
     filename?: Prisma.StringFilter<"Chapter"> | string;
     path?: Prisma.StringFilter<"Chapter"> | string;
+    coverPath?: Prisma.StringNullableFilter<"Chapter"> | string | null;
     bookId?: Prisma.IntFilter<"Chapter"> | number;
     createdAt?: Prisma.DateTimeFilter<"Chapter"> | Date | string;
 };
@@ -391,6 +416,7 @@ export type ChapterCreateManyBookInput = {
     title?: string | null;
     filename: string;
     path: string;
+    coverPath?: string | null;
     createdAt?: Date | string;
 };
 export type ChapterUpdateWithoutBookInput = {
@@ -398,6 +424,7 @@ export type ChapterUpdateWithoutBookInput = {
     title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     filename?: Prisma.StringFieldUpdateOperationsInput | string;
     path?: Prisma.StringFieldUpdateOperationsInput | string;
+    coverPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 export type ChapterUncheckedUpdateWithoutBookInput = {
@@ -406,6 +433,7 @@ export type ChapterUncheckedUpdateWithoutBookInput = {
     title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     filename?: Prisma.StringFieldUpdateOperationsInput | string;
     path?: Prisma.StringFieldUpdateOperationsInput | string;
+    coverPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 export type ChapterUncheckedUpdateManyWithoutBookInput = {
@@ -414,6 +442,7 @@ export type ChapterUncheckedUpdateManyWithoutBookInput = {
     title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     filename?: Prisma.StringFieldUpdateOperationsInput | string;
     path?: Prisma.StringFieldUpdateOperationsInput | string;
+    coverPath?: Prisma.NullableStringFieldUpdateOperationsInput | string | null;
     createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
 };
 export type ChapterSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -422,6 +451,7 @@ export type ChapterSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     title?: boolean;
     filename?: boolean;
     path?: boolean;
+    coverPath?: boolean;
     bookId?: boolean;
     createdAt?: boolean;
     book?: boolean | Prisma.BookDefaultArgs<ExtArgs>;
@@ -432,6 +462,7 @@ export type ChapterSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
     title?: boolean;
     filename?: boolean;
     path?: boolean;
+    coverPath?: boolean;
     bookId?: boolean;
     createdAt?: boolean;
     book?: boolean | Prisma.BookDefaultArgs<ExtArgs>;
@@ -442,6 +473,7 @@ export type ChapterSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
     title?: boolean;
     filename?: boolean;
     path?: boolean;
+    coverPath?: boolean;
     bookId?: boolean;
     createdAt?: boolean;
     book?: boolean | Prisma.BookDefaultArgs<ExtArgs>;
@@ -452,10 +484,11 @@ export type ChapterSelectScalar = {
     title?: boolean;
     filename?: boolean;
     path?: boolean;
+    coverPath?: boolean;
     bookId?: boolean;
     createdAt?: boolean;
 };
-export type ChapterOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "chapterNum" | "title" | "filename" | "path" | "bookId" | "createdAt", ExtArgs["result"]["chapter"]>;
+export type ChapterOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "chapterNum" | "title" | "filename" | "path" | "coverPath" | "bookId" | "createdAt", ExtArgs["result"]["chapter"]>;
 export type ChapterInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
     book?: boolean | Prisma.BookDefaultArgs<ExtArgs>;
 };
@@ -476,6 +509,7 @@ export type $ChapterPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
         title: string | null;
         filename: string;
         path: string;
+        coverPath: string | null;
         bookId: number;
         createdAt: Date;
     }, ExtArgs["result"]["chapter"]>;
@@ -541,6 +575,7 @@ export interface ChapterFieldRefs {
     readonly title: Prisma.FieldRef<"Chapter", 'String'>;
     readonly filename: Prisma.FieldRef<"Chapter", 'String'>;
     readonly path: Prisma.FieldRef<"Chapter", 'String'>;
+    readonly coverPath: Prisma.FieldRef<"Chapter", 'String'>;
     readonly bookId: Prisma.FieldRef<"Chapter", 'Int'>;
     readonly createdAt: Prisma.FieldRef<"Chapter", 'DateTime'>;
 }

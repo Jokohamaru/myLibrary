@@ -2,9 +2,18 @@
 
 import { useEffect, useState } from 'react';
 import { useParams, useRouter, useSearchParams } from 'next/navigation';
+import dynamic from 'next/dynamic';
 import { getBook, getAssetUrl } from '@/lib/api';
-import PDFReader from '@/components/PDFReader';
 import AuthGuard from '@/components/AuthGuard';
+
+const PDFReader = dynamic(() => import('@/components/PDFReader'), {
+  ssr: false,
+  loading: () => (
+    <div className="min-h-screen flex items-center justify-center bg-zinc-950 text-white">
+      <div className="w-10 h-10 border-4 border-violet-500 border-t-transparent rounded-full animate-spin" />
+    </div>
+  ),
+});
 
 interface Chapter {
   id: number;

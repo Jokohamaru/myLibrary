@@ -46,6 +46,7 @@ model Chapter {
   title      String?
   filename   String
   path       String
+  coverPath  String?
   book       Book     @relation(fields: [bookId], references: [id], onDelete: Cascade)
   bookId     Int
   createdAt  DateTime @default(now())

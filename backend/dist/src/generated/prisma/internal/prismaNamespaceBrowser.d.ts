@@ -55,6 +55,7 @@ export declare const ChapterScalarFieldEnum: {
     readonly title: "title";
     readonly filename: "filename";
     readonly path: "path";
+    readonly coverPath: "coverPath";
     readonly bookId: "bookId";
     readonly createdAt: "createdAt";
 };

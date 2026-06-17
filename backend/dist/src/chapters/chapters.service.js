@@ -24,6 +24,7 @@ let ChaptersService = class ChaptersService {
                 title,
                 filename,
                 path: filePath,
+                coverPath,
             },
         });
         if (coverPath) {

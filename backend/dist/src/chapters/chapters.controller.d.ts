@@ -8,6 +8,7 @@ export declare class ChaptersController {
     }, bookIdStr: string, chapterNumStr: string, title?: string): Promise<{
         path: string;
         title: string | null;
+        coverPath: string | null;
         createdAt: Date;
         id: number;
         chapterNum: number;

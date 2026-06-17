@@ -10,12 +10,13 @@ export declare class BooksController {
             name: string;
         } | null;
         chapters: {
+            path: string;
             title: string | null;
+            coverPath: string | null;
             createdAt: Date;
             id: number;
             chapterNum: number;
             filename: string;
-            path: string;
             bookId: number;
         }[];
     } & {
@@ -39,12 +40,13 @@ export declare class BooksController {
             name: string;
         } | null;
         chapters: {
+            path: string;
             title: string | null;
+            coverPath: string | null;
             createdAt: Date;
             id: number;
             chapterNum: number;
             filename: string;
-            path: string;
             bookId: number;
         }[];
     } & {
@@ -68,12 +70,13 @@ export declare class BooksController {
             name: string;
         } | null;
         chapters: {
+            path: string;
             title: string | null;
+            coverPath: string | null;
             createdAt: Date;
             id: number;
             chapterNum: number;
             filename: string;
-            path: string;
             bookId: number;
         }[];
     } & {
@@ -104,12 +107,13 @@ export declare class BooksController {
             name: string;
         } | null;
         chapters: {
+            path: string;
             title: string | null;
+            coverPath: string | null;
             createdAt: Date;
             id: number;
             chapterNum: number;
             filename: string;
-            path: string;
             bookId: number;
         }[];
     } & {
@@ -133,12 +137,13 @@ export declare class BooksController {
             name: string;
         } | null;
         chapters: {
+            path: string;
             title: string | null;
+            coverPath: string | null;
             createdAt: Date;
             id: number;
             chapterNum: number;
             filename: string;
-            path: string;
             bookId: number;
         }[];
     } & {

@@ -22,10 +22,11 @@ export class ChaptersService {
         title,
         filename,
         path: filePath,
+        coverPath,          // ← store cover on the chapter
       },
     });
 
-    // If cover provided (first chapter), update book coverPath
+    // If this is the first chapter, also set it as the book's cover
     if (coverPath) {
       const book = await this.prisma.book.findUnique({ where: { id: bookId } });
       if (book && !book.coverPath) {
